@@ -11,14 +11,17 @@ function latAndLong(){
   navigator.geolocation.getCurrentPosition((position) => {
     lat = position.coords.latitude;
     long = position.coords.longitude;
-    console.log(lat, long)
   }
   )
 }
 
 //axios request to get weather
 const weatherDisplay = document.querySelector('.weatherLive')
+
+
+const h1 = document.querySelector('.h1')
 async function weatherCall() {
+  h1.innerText = `The weather at ${lat} ${long} is...`
   const weather = await axios.get(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${long}&hourly=rain,snowfall&current_weather=true`)
 console.log(weather)
 //adds weather to page
@@ -29,5 +32,5 @@ console.log(weather)
 
 
 //initializes weatherCall
-const what = document.querySelector('.whats')
-what.addEventListener('click', weatherCall)
+const displayWeather = document.querySelector('.displayWeather')
+displayWeather.addEventListener('click', weatherCall)
