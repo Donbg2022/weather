@@ -32,8 +32,7 @@ const weatherDisplay = document.querySelector('.weatherLive')
 
 const h1 = document.querySelector('.h1')
 async function weatherCall() {
-    locationBtn.style.display = 'none'
-
+  displayWeather.style.display = 'none'
   h1.innerText = `The weather at ${lat} ${long} is...`
   const weather = await axios.get(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${long}&hourly=rain,snowfall&current_weather=true`)
 console.log(weather)

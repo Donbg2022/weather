@@ -1,3 +1,29 @@
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+#title{
+  text-align: center;
+  margin: 15px;
+}
+
+div p {
+  text-align: center;
+  font-size: x-large;
+  padding: 5px;
+}
+
+.p-container{
+  margin-top: 70px;
+}
 .displayWeather{
   display: none
+}
+#button{
+  padding: 5px;
+  border-radius: 5px;
+  margin-left: auto;
+  margin-right: auto;
 }
