@@ -1,18 +1,29 @@
+//initializes weatherCall
+const displayWeather = document.querySelector('.displayWeather')
+displayWeather.addEventListener('click', weatherCall)
+
 
 //asks user permission to use tracking
 const locationBtn = document.querySelector('.allow')
 locationBtn.addEventListener('click', latAndLong)
+
+
 
 //function to get latitude and longitude
 //sets global variables to be updated
 let lat = '';
 let long = '';
 function latAndLong(){
+  locationBtn.style.display = 'none'
+  displayWeather.style.display = 'block'
+
+
   navigator.geolocation.getCurrentPosition((position) => {
     lat = position.coords.latitude;
     long = position.coords.longitude;
   }
   )
+  
 }
 
 //axios request to get weather
@@ -21,6 +32,8 @@ const weatherDisplay = document.querySelector('.weatherLive')
 
 const h1 = document.querySelector('.h1')
 async function weatherCall() {
+    locationBtn.style.display = 'none'
+
   h1.innerText = `The weather at ${lat} ${long} is...`
   const weather = await axios.get(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${long}&hourly=rain,snowfall&current_weather=true`)
 console.log(weather)
@@ -31,6 +44,3 @@ console.log(weather)
 }
 
 
-//initializes weatherCall
-const displayWeather = document.querySelector('.displayWeather')
-displayWeather.addEventListener('click', weatherCall)
